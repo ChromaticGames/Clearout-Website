@@ -1032,10 +1032,10 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 
 <script>
 
-function submitQuote() {
+async function submitQuote() {
   const fname = document.getElementById('fname').value.trim();
-  const phone = document.getElementById('phone').value.trim();
   const lname = document.getElementById('lname').value.trim();
+  const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
   const service = document.getElementById('service').value;
   const details = document.getElementById('details').value.trim();
@@ -1048,17 +1048,42 @@ function submitQuote() {
     return;
   }
 
-  // Build mailto link
-  const subject = encodeURIComponent('New Quote Request - Clear Out Co.');
-  const body = encodeURIComponent(
-    'Name: ' + fname + ' ' + lname + '\n' +
-    'Phone: ' + phone + '\n' +
-    'Email: ' + email + '\n' +
-    'Service: ' + service + '\n' +
-    'Details: ' + details
-  );
-  window.location.href = 'mailto:ataabaan@gmail.com?subject=' + subject + '&body=' + body;
-  document.getElementById('form-success').style.display = 'block';
+  const btn = document.querySelector('button[onclick="submitQuote()"]');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  try {
+    const response = await fetch('https://formspree.io/f/maqgwolj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: fname + ' ' + lname,
+        phone: phone,
+        email: email,
+        service: service,
+        details: details
+      })
+    });
+
+    if (response.ok) {
+      document.getElementById('form-success').style.display = 'block';
+      document.getElementById('fname').value = '';
+      document.getElementById('lname').value = '';
+      document.getElementById('phone').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('service').value = '';
+      document.getElementById('details').value = '';
+      btn.textContent = 'Get My Free Quote →';
+      btn.disabled = false;
+    } else {
+      throw new Error('Failed');
+    }
+  } catch(e) {
+    document.getElementById('form-error').textContent = '⚠️ Something went wrong. Please call or text us directly.';
+    document.getElementById('form-error').style.display = 'block';
+    btn.textContent = 'Get My Free Quote →';
+    btn.disabled = false;
+  }
 }
 
 // Scroll reveal
