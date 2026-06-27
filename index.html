@@ -529,6 +529,11 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-badge">⚡ Same-Day Service Available</div>
+      <div id="availability-badge" style="display:inline-flex; align-items:center; margin-bottom:20px;
+           padding:8px 18px; border-radius:100px; border:1px solid; font-size:13px; font-weight:600;
+           letter-spacing:0.04em; transition:all 0.3s;">
+        Loading...
+      </div>
       <h1>
         We Haul<br>
         <span class="accent">Your Junk.</span><br>
@@ -874,6 +879,156 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   </div>
 </section>
 
+
+
+<!-- CALCULATOR -->
+<section style="background: var(--dark); padding: 100px 24px;" id="calculator">
+  <div class="section-inner" style="max-width: 800px;">
+    <div class="reveal" style="text-align:center; margin-bottom: 48px;">
+      <span class="eyebrow light" style="display:block; text-align:center;">Instant Estimate</span>
+      <h2 class="section-title" style="text-align:center; color:white;">Get Your <span style="color:var(--accent)">Price Estimate</span></h2>
+      <p class="section-sub" style="text-align:center; margin: 0 auto; color:rgba(255,255,255,0.55);">Select your load size and any extras — we'll show you an instant estimate before you even call us.</p>
+    </div>
+
+    <div class="reveal" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:24px; padding:40px;">
+
+      <!-- Load Size -->
+      <div style="margin-bottom:32px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:16px;">Step 1 — Select Your Load Size</div>
+        <div style="font-size:12px; color:rgba(255,255,255,0.35); margin-bottom:12px; font-style:italic;">Based on our 8ft pickup truck (71 cu ft). Prices may vary based on truck size.</div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:10px;" id="load-selector">
+          <button onclick="selectLoad(this, 100)" class="load-btn" style="background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 10px; cursor:pointer; transition:all 0.2s; color:white;">
+            <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.6); margin-bottom:4px;">Minimum</div>
+            <div style="font-size:22px; font-weight:800; color:var(--accent);">$100</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px;">~12 cu ft</div>
+          </button>
+          <button onclick="selectLoad(this, 175)" class="load-btn" style="background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 10px; cursor:pointer; transition:all 0.2s; color:white;">
+            <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.6); margin-bottom:4px;">Quarter Load</div>
+            <div style="font-size:22px; font-weight:800; color:var(--accent);">$175</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px;">~18 cu ft</div>
+          </button>
+          <button onclick="selectLoad(this, 275)" class="load-btn" style="background:rgba(37,71,200,0.3); border:2px solid rgba(37,71,200,0.6); border-radius:12px; padding:16px 10px; cursor:pointer; transition:all 0.2s; color:white;">
+            <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.6); margin-bottom:4px;">Half Load</div>
+            <div style="font-size:22px; font-weight:800; color:var(--accent);">$275</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px;">~35 cu ft</div>
+          </button>
+          <button onclick="selectLoad(this, 375)" class="load-btn" style="background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 10px; cursor:pointer; transition:all 0.2s; color:white;">
+            <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.6); margin-bottom:4px;">¾ Load</div>
+            <div style="font-size:22px; font-weight:800; color:var(--accent);">$375</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px;">~53 cu ft</div>
+          </button>
+          <button onclick="selectLoad(this, 475)" class="load-btn" style="background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.12); border-radius:12px; padding:16px 10px; cursor:pointer; transition:all 0.2s; color:white;">
+            <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.6); margin-bottom:4px;">Full Load</div>
+            <div style="font-size:22px; font-weight:800; color:var(--accent);">$475</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px;">~71 cu ft</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Heavy Items -->
+      <div style="margin-bottom:32px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+          <div style="font-size:12px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5);">Step 2 — Any Heavy Items? <span style="color:rgba(255,255,255,0.3); font-weight:400; text-transform:none; letter-spacing:0;">(optional)</span></div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.3); font-style:italic;">Prices may vary based on weight & size</div>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">
+          <label style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 16px; cursor:pointer; color:rgba(255,255,255,0.75); font-size:14px;">
+            <span style="display:flex; align-items:center; gap:10px;"><input type="checkbox" onchange="updateTotal()" data-surcharge="150" style="accent-color:var(--accent); width:16px; height:16px;"> Fridge / Freezer</span>
+            <span style="color:var(--accent); font-weight:700; font-size:13px;">+$150</span>
+          </label>
+          <label style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 16px; cursor:pointer; color:rgba(255,255,255,0.75); font-size:14px;">
+            <span style="display:flex; align-items:center; gap:10px;"><input type="checkbox" onchange="updateTotal()" data-surcharge="125" style="accent-color:var(--accent); width:16px; height:16px;"> Washer / Dryer</span>
+            <span style="color:var(--accent); font-weight:700; font-size:13px;">+$125</span>
+          </label>
+          <label style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 16px; cursor:pointer; color:rgba(255,255,255,0.75); font-size:14px;">
+            <span style="display:flex; align-items:center; gap:10px;"><input type="checkbox" onchange="updateTotal()" data-surcharge="100" style="accent-color:var(--accent); width:16px; height:16px;"> Stove / Oven</span>
+            <span style="color:var(--accent); font-weight:700; font-size:13px;">+$100</span>
+          </label>
+          <label style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 16px; cursor:pointer; color:rgba(255,255,255,0.75); font-size:14px;">
+            <span style="display:flex; align-items:center; gap:10px;"><input type="checkbox" onchange="updateTotal()" data-surcharge="100" style="accent-color:var(--accent); width:16px; height:16px;"> Sectional Sofa</span>
+            <span style="color:var(--accent); font-weight:700; font-size:13px;">+$100</span>
+          </label>
+          <label style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 16px; cursor:pointer; color:rgba(255,255,255,0.75); font-size:14px;">
+            <span style="display:flex; align-items:center; gap:10px;"><input type="checkbox" onchange="updateTotal()" data-surcharge="100" style="accent-color:var(--accent); width:16px; height:16px;"> Treadmill / Equipment</span>
+            <span style="color:var(--accent); font-weight:700; font-size:13px;">+$100</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div style="margin-bottom:32px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:16px;">Step 3 — How Will You Pay?</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <label style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 20px; cursor:pointer; color:rgba(255,255,255,0.75); font-size:14px;">
+            <input type="radio" name="payment" value="cash" onchange="updateTotal()" checked style="accent-color:var(--accent);"> Cash / Zelle / Venmo <span style="color:#16A34A; font-size:12px; font-weight:700; margin-left:4px;">No fee</span>
+          </label>
+          <label style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 20px; cursor:pointer; color:rgba(255,255,255,0.75); font-size:14px;">
+            <input type="radio" name="payment" value="card" onchange="updateTotal()" style="accent-color:var(--accent);"> Credit / Debit Card <span style="color:var(--accent); font-size:12px; font-weight:700; margin-left:4px;">+2.6% fee</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div id="estimate-box" style="background:rgba(37,71,200,0.2); border:1px solid rgba(37,71,200,0.4); border-radius:16px; padding:28px; text-align:center; display:none;">
+        <div style="font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:8px;">Your Estimate</div>
+        <div id="estimate-total" style="font-family:'Bebas Neue',sans-serif; font-size:72px; color:var(--accent); line-height:1;"></div>
+        <div id="estimate-breakdown" style="font-size:13px; color:rgba(255,255,255,0.4); margin-top:8px;"></div>
+        <div style="margin-top:20px; font-size:13px; color:rgba(255,255,255,0.4);">This is an estimate — final price confirmed before we start.</div>
+        <a href="#contact" style="display:inline-block; margin-top:20px; background:var(--accent); color:var(--dark); font-weight:800; font-size:15px; padding:14px 32px; border-radius:10px; text-decoration:none;">Book This Job →</a>
+      </div>
+
+      <div id="estimate-placeholder" style="background:rgba(255,255,255,0.03); border:1px dashed rgba(255,255,255,0.1); border-radius:16px; padding:28px; text-align:center; color:rgba(255,255,255,0.3); font-size:14px;">
+        👆 Select a load size above to see your estimate
+      </div>
+
+    </div>
+
+    <!-- Payment fee note -->
+    <div class="reveal" style="margin-top:16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px 24px; display:flex; align-items:center; gap:12px;">
+      <span style="font-size:18px;">💳</span>
+      <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.6;"><strong style="color:rgba(255,255,255,0.7);">Card Processing Fee:</strong> A 2.6% processing fee applies to all credit and debit card payments. To avoid the fee, pay by cash, Zelle, or Venmo.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+let selectedLoad = 0;
+
+function selectLoad(btn, price) {
+  selectedLoad = price;
+  document.querySelectorAll('.load-btn').forEach(b => {
+    b.style.background = 'rgba(255,255,255,0.06)';
+    b.style.borderColor = 'rgba(255,255,255,0.12)';
+  });
+  btn.style.background = 'rgba(37,71,200,0.4)';
+  btn.style.borderColor = 'rgba(79,111,232,0.8)';
+  updateTotal();
+}
+
+function updateTotal() {
+  if (selectedLoad === 0) return;
+
+  let surcharge = 0;
+  document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+    surcharge += parseInt(cb.dataset.surcharge);
+  });
+
+  let subtotal = selectedLoad + surcharge;
+  const isCard = document.querySelector('input[name="payment"]:checked')?.value === 'card';
+  const fee = isCard ? Math.round(subtotal * 0.026 * 100) / 100 : 0;
+  const total = subtotal + fee;
+
+  document.getElementById('estimate-box').style.display = 'block';
+  document.getElementById('estimate-placeholder').style.display = 'none';
+  document.getElementById('estimate-total').textContent = '$' + total.toFixed(0);
+
+  let breakdown = 'Base: $' + selectedLoad;
+  if (surcharge > 0) breakdown += '  +  Heavy items: $' + surcharge;
+  if (fee > 0) breakdown += '  +  Card fee: $' + fee.toFixed(2);
+  document.getElementById('estimate-breakdown').textContent = breakdown;
+}
+</script>
 
 <!-- FAQ -->
 <section style="background: var(--off-white); padding: 100px 24px;">
@@ -1253,6 +1408,54 @@ window.addEventListener('scroll', () => {
     : 'rgba(8,14,36,0.85)';
 });
 </script>
+
+
+<!-- FLOATING TEXT BUTTON -->
+<a href="sms:+12408052539&body=Hi! I'd like a free quote from Clear Out Co." 
+   style="position:fixed; bottom:28px; right:24px; z-index:999;
+          background:#F5A623; color:#080E24; font-weight:800; font-size:14px;
+          padding:14px 22px; border-radius:100px; text-decoration:none;
+          display:flex; align-items:center; gap:8px;
+          box-shadow:0 4px 24px rgba(245,166,35,0.45);
+          transition:transform 0.2s, box-shadow 0.2s;"
+   onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(245,166,35,0.55)'"
+   onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(245,166,35,0.45)'">
+  💬 Text Us
+</a>
+
+<script>
+// LIVE AVAILABILITY BADGE
+function updateAvailability() {
+  const badge = document.getElementById('availability-badge');
+  if (!badge) return;
+  const now = new Date();
+  const day = now.getDay(); // 0=Sun, 6=Sat
+  const hour = now.getHours();
+  const isOpen = hour >= 9 && hour < 21; // 9AM-9PM
+
+  if (isOpen) {
+    badge.innerHTML = '<span style="display:inline-block;width:10px;height:10px;background:#16A34A;border-radius:50%;margin-right:8px;animation:pulse-green 1.5s infinite;"></span> Available Today — Call Now';
+    badge.style.background = 'rgba(22,163,74,0.15)';
+    badge.style.borderColor = 'rgba(22,163,74,0.4)';
+    badge.style.color = '#86EFAC';
+  } else {
+    badge.innerHTML = '<span style="display:inline-block;width:10px;height:10px;background:#F5A623;border-radius:50%;margin-right:8px;"></span> Call to Schedule — Open 9AM–9PM';
+    badge.style.background = 'rgba(245,166,35,0.12)';
+    badge.style.borderColor = 'rgba(245,166,35,0.3)';
+    badge.style.color = '#FCD34D';
+  }
+}
+
+updateAvailability();
+setInterval(updateAvailability, 60000);
+</script>
+
+<style>
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22,163,74,0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(22,163,74,0); }
+}
+</style>
 
 </body>
 </html>
